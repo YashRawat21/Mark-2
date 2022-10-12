@@ -1,5 +1,7 @@
 var readLineSync = require('readline-sync');
 var score = 0;
+var finalScore = 0;
+var highScore = 4;
 var userName = readLineSync.question(" what's your name? ");
 console.log("welcome " + userName);
 
@@ -14,7 +16,7 @@ var questions = [
   },
   {
     question: " What type of doctor is Doctor Strange ",
-    answer: "A neurosurgeon"
+    answer: "neurosurgeon"
   },
   {
     question: " Whose power exceeds that of the Sorcerer Supereme? ",
@@ -30,7 +32,7 @@ var questions = [
   },
   {
     question: " In which movie did Spider-Man make his first appearance in MCU? ",
-    answer: "Captain America: Civil war",
+    answer: "Civil war",
   },
   {
     question: " Wanda and her brother Pietro are from where? ",
@@ -43,11 +45,11 @@ function play(question, answer) {
   if (userAnswer.toUpperCase() === answer.toUpperCase()) {
     console.log(" yes! you are correct ");
     score = score + 1;
+    finalScore = score;
     console.log(" your score is: ", score);
   } else {
     console.log(" oops! you are wrong ");
-    score = score - 1;
-    console.log(" your score is: ", score);
+    console.log("The correct answer is: ",answer)
   }
 
 }
@@ -57,3 +59,6 @@ for (var i = 0; i < questions.length; i++) {
   play(currentQuestion.question, currentQuestion.answer)
 }
 console.log("YAY! you scored:", score);
+if(finalScore > highScore ) {
+  console.log("Congratulations, You have broken the high score.\n Send me the screenshot so that I can display your name.")
+}
